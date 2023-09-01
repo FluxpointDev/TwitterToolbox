@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Twitter Toolbox",
+    "version": "1.0.0",
+    "description": "Debloat Twitter, improved functionality and new features for a better experience.",
+    "browser_action": {
+      "default_icon": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://twitter.com/*"
+        ],
+        "js": [
+          "script.js"
+        ],
+        "css": [
+          "style.css"
+        ]
+      }
+    ],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "tt@fluxpoint.dev"
+      }
+    }
+  }
