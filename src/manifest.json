@@ -1,17 +1,36 @@
 {
     "manifest_version": 3,
+    "permissions": ["storage"],
+    "host_permissions": [
+      "https://twitter.com/*"
+    ],
+    "author": "builderb@fluxpoint.dev",
+    "homepage_url": "https://github.com/FluxpointDev/TwitterToolbox",
     "name": "Twitter Toolbox",
     "version": "1.0.0",
-    "description": "Debloat Twitter, improved functionality and new features for a better experience.",
-    "browser_action": {
-      "default_icon": "icon.png"
-    },
+    "description": "Debloat Twitter, improve functionality and new features for a better experience.",
+    "options_ui": {
+      "page": "options.html",
+      "browser_style": false
+   },
+   "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+   "web_accessible_resources": [
+    {
+      "resources": [ "options.html" ],
+      "matches": [ "https://twitter.com/*" ]
+    }
+  ],
     "content_scripts": [
       {
         "matches": [
           "https://twitter.com/*"
         ],
         "js": [
+          "js/StorageHelper.js",
+          "js/DataModule.js",
           "script.js"
         ],
         "css": [
@@ -21,7 +40,8 @@
     ],
     "browser_specific_settings": {
       "gecko": {
-        "id": "tt@fluxpoint.dev"
+        "id": "tt@fluxpoint.dev",
+        "strict_min_version": "99.0"
       }
     }
   }
